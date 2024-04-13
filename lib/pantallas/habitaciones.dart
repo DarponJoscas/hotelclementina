@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart'; // Importa el paquete de CarouselSlider
 import 'package:hotelclementina/reservar/reservar.dart'; // Importa la pantalla "Reservar"
 
-class habitaciones extends StatefulWidget {
-  const habitaciones({Key? key}) : super(key: key);
+class Categoria extends StatefulWidget {
+  const Categoria({Key? key}) : super(key: key);
 
   @override
-  _habitacionesState createState() => _habitacionesState();
+  _CategoriaState createState() => _CategoriaState();
 }
 
-class _habitacionesState extends State<habitaciones> {
+class _CategoriaState extends State<Categoria> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -59,14 +59,58 @@ class _habitacionesState extends State<habitaciones> {
                 ),
                 buildContainer(
                   imageUrls: [
-                    'images/hotel4.jpg',
-                    'images/hotel5.jpg',
-                    'images/hotel6.jpg',
+                    'images/hotel1.jpg',
+                    'images/hotel2.jpg',
+                    'images/hotel3.jpg',
                   ],
                   title: 'Pareja',
                   price: 'HNL 1700',
                 ),
-                // Agrega más contenedores aquí según sea necesario
+                buildContainer(
+                  imageUrls: [
+                    'images/hotel1.jpg',
+                    'images/hotel2.jpg',
+                    'images/hotel3.jpg',
+                  ],
+                  title: 'Doble',
+                  price: 'HNL 1850',
+                ),
+                buildContainer(
+                  imageUrls: [
+                    'images/hotel1.jpg',
+                    'images/hotel2.jpg',
+                    'images/hotel3.jpg',
+                  ],
+                  title: 'Triple',
+                  price: 'HNL 2650',
+                ),
+                buildContainer(
+                  imageUrls: [
+                    'images/hotel1.jpg',
+                    'images/hotel2.jpg',
+                    'images/hotel3.jpg',
+                  ],
+                  title: 'Suite Junior (1 Persona)',
+                  price: 'HNL 1450',
+                ),
+                buildContainer(
+                  imageUrls: [
+                    'images/hotel1.jpg',
+                    'images/hotel2.jpg',
+                    'images/hotel3.jpg',
+                  ],
+                  title: 'Suite Junior (2 Personas)',
+                  price: 'HNL 1800',
+                ),
+                buildContainer(
+                  imageUrls: [
+                    'images/hotel1.jpg',
+                    'images/hotel2.jpg',
+                    'images/hotel3.jpg',
+                  ],
+                  title: 'Suite Principal',
+                  price: 'HNL 2100',
+                )
               ],
             ),
           ),
