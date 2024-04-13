@@ -23,7 +23,7 @@ class _TravelAppState extends State<TravelApp> {
 
   final List<Widget> _screens = [
     Inicio(),
-    Habitaciones(),
+    Categoria(),
     Reservaciones(),
   ];
   
