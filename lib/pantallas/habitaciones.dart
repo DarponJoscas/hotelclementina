@@ -1,50 +1,231 @@
 import 'package:flutter/material.dart';
+import 'package:carousel_slider/carousel_slider.dart'; // Importa el paquete de CarouselSlider
 import 'package:hotelclementina/reservar/reservar.dart'; // Importa la pantalla "Reservar"
 
-class Habitaciones extends StatelessWidget {
+class habitaciones extends StatefulWidget {
+  const habitaciones({Key? key}) : super(key: key);
+
+  @override
+  _habitacionesState createState() => _habitacionesState();
+}
+
+class _habitacionesState extends State<habitaciones> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              SizedBox(
-                width: 400,
-                height: 200,
-                child: Image.asset('assets/habitacion1.jpg'), // Ruta de la primera imagen
-              ), // Imagen 1
-              SizedBox(height: 20), // Espacio entre las imágenes
-              SizedBox(
-                width: 400,
-                height: 200,
-                child: Image.asset('assets/habitacion2.jpg'), // Ruta de la segunda imagen
-              ), // Imagen 2
-              SizedBox(height: 20), // Espacio entre las imágenes
-              SizedBox(
-                width: 400,
-                height: 200,
-                child: Image.asset('assets/habitacion3.jpg'), // Ruta de la tercera imagen
-              ), // Imagen 3
-              SizedBox(height: 20), // Espacio entre las imágenes
-              Text(
-                'Selecciona una habitación para reservar', 
-                style: TextStyle(fontSize: 18),
-              ), // Texto
-              SizedBox(height: 20), // Espacio entre el texto y el botón
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => Reservar()), // Redirige a la pantalla "Reservar"
-                  );
-                },
-                child: Text('Reservar'),
-              ), // Botón
-            ],
-          ),
+      appBar: AppBar(
+        elevation: 0.0,
+        backgroundColor: Color.fromARGB(255, 114, 128, 235),
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Image.asset(
+              'images/logoHD.png',
+              height: 40, // Altura deseada de la imagen
+              width: 40, // Ancho deseado de la imagen
+            ),
+            SizedBox(
+              width: 10,
+            ),
+            Text(
+              'Habitaciones',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 26.0,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+          ],
         ),
+      ),
+      body: ListView(
+        scrollDirection: Axis.vertical,
+        children: [
+          SizedBox(
+            height: 12,
+          ),
+          SingleChildScrollView(
+            scrollDirection: Axis.vertical,
+            child: Column(
+              children: [
+                buildContainer(
+                  imageUrls: [
+                    'images/hotel1.jpg',
+                    'images/hotel2.jpg',
+                    'images/hotel3.jpg',
+                  ],
+                  title: 'Sencilla',
+                  price: 'HNL 1300',
+                ),
+                buildContainer(
+                  imageUrls: [
+                    'images/hotel4.jpg',
+                    'images/hotel5.jpg',
+                    'images/hotel6.jpg',
+                  ],
+                  title: 'Pareja',
+                  price: 'HNL 1700',
+                ),
+                // Agrega más contenedores aquí según sea necesario
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget buildContainer(
+      {required List<String> imageUrls,
+      required String title,
+      required String price}) {
+    return Container(
+      width: 380,
+      height: 478,
+      margin: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(18),
+        border: Border.all(color: Colors.blue.shade100, width: 2),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.5),
+            spreadRadius: 5, //Lo extenso de la sombra
+            blurRadius: 9, //La opacidad extendida
+            offset: Offset(0, 3),
+          ),
+        ],
+      ),
+      child: Column(
+        children: [
+          SizedBox(
+            height: 15,
+          ),
+          CarouselSlider(
+            items: imageUrls.map((imageUrl) {
+              return Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(18),
+                ),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(18),
+                  child: Image.asset(
+                    imageUrl,
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              );
+            }).toList(),
+            options: CarouselOptions(
+              height: 260, //Tamaño del carrusel
+              viewportFraction: 1,
+              enableInfiniteScroll: true,
+              autoPlay: true,
+              autoPlayInterval: Duration(seconds: 3),
+            ),
+          ),
+          SizedBox(
+            height: 8,
+          ),
+          Container(
+            width: 350,
+            height: 33,
+            // Ocupa todo el espacio horizontal disponible
+            child: Text(
+              title,
+              textAlign: TextAlign.left, // Alinea el texto a la izquierda
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 24.0,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+          Divider(
+            // Línea divisora
+            //#E6B800
+            color: Color(0xFFE6B800),
+            thickness: 2, //grosor de la linea en pixeles
+            height:
+                20, //Define la altura vertical de la línea divisora en píxeles
+            indent: 10, //Define el espacio a la izquierda de la línea divisora
+            endIndent: 10, //Define el espacio a la derecha de la línea divisora
+          ),
+          Container(
+            width: 350,
+            height: 40,
+            // Ocupa todo el espacio horizontal disponible
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Icon(
+                  Icons.paid_outlined, // Icono de dinero
+                  color: Colors.green, // Color del icono
+                  size: 30.0, // Tamaño del icono
+                ),
+                Text(
+                  price,
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 22.0,
+                    fontWeight: FontWeight.w600,
+                    fontStyle: FontStyle.italic,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          SizedBox(
+            height: 5,
+          ),
+          Container(
+            width: 350,
+            height: 48,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(80),
+              border: Border.all(
+                  color: const Color.fromARGB(255, 254, 255, 255),
+                  width: 0), //borde del container
+              boxShadow: [
+                BoxShadow(
+                  color: Color.fromARGB(255, 147, 153, 155).withOpacity(0.3),
+                  spreadRadius: 3, //Lo extenso de la sombra
+                  blurRadius: 7, //La opacidad extendida
+                  offset: Offset(0, 5), //Desplazamiento del eje XY
+                ),
+              ],
+            ),
+            child: ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => Reservar()),
+                );
+              },
+              style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.all<Color>(
+                    Color(0xFFE6B800)), // Cambia el color de fondo a amarillo
+                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                  RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(
+                        80.0), // Ajusta el radio para hacer los bordes redondos
+                  ),
+                ),
+              ),
+              child: Text(
+                'Reservar',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 21.0,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+          ),
+          SizedBox(
+            height: 40,
+          ),
+        ],
       ),
     );
   }
