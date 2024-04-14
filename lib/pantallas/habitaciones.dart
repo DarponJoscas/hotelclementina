@@ -20,7 +20,7 @@ class _CategoriaState extends State<Categoria> {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Image.asset(
-              'images/logo.png',
+              'images/logoHD.png',
               height: 40, // Altura deseada de la imagen
               width: 40, // Ancho deseado de la imagen
             ),
