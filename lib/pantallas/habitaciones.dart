@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart'; // Importa el paquete de CarouselSlider
-import 'package:hotelprueba1/reservar/reservar.dart';
+import 'package:hotelclementina/reservar/reservar.dart'; 
 
 class Categoria extends StatefulWidget {
   const Categoria({Key? key}) : super(key: key);
