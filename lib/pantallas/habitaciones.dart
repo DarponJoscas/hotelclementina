@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart'; // Importa el paquete de CarouselSlider
-import 'package:hotelclementina/reservar/reservar.dart'; // Importa la pantalla "Reservar"
+import 'package:hotelprueba1/reservar/reservar.dart';
 
 class Categoria extends StatefulWidget {
   const Categoria({Key? key}) : super(key: key);
@@ -20,7 +20,7 @@ class _CategoriaState extends State<Categoria> {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Image.asset(
-              'images/logoHD.png',
+              'images/logo.png',
               height: 40, // Altura deseada de la imagen
               width: 40, // Ancho deseado de la imagen
             ),
@@ -50,63 +50,72 @@ class _CategoriaState extends State<Categoria> {
               children: [
                 buildContainer(
                   imageUrls: [
-                    'images/hotel1.jpg',
-                    'images/hotel2.jpg',
-                    'images/hotel3.jpg',
+                    'images/sencilla1.jpg',
+                    'images/sencilla2 (2).jpg',
+                    'images/sencilla2.jpg',
+                    'images/b1.jpg',
                   ],
                   title: 'Sencilla',
                   price: 'HNL 1300',
                 ),
                 buildContainer(
                   imageUrls: [
-                    'images/hotel1.jpg',
-                    'images/hotel2.jpg',
-                    'images/hotel3.jpg',
+                    'images/pareja1.jpg',
+                    'images/pareja3.jpg',
+                    'images/pareja4.jpg',
+                    'images/pareja22.jpg',
+                    'images/bp11.jpg',
                   ],
                   title: 'Pareja',
                   price: 'HNL 1700',
                 ),
                 buildContainer(
                   imageUrls: [
-                    'images/hotel1.jpg',
-                    'images/hotel2.jpg',
-                    'images/hotel3.jpg',
+                    'images/d2.jpg',
+                    'images/d4.jpg',
+                    'images/d5.jpg',
                   ],
                   title: 'Doble',
                   price: 'HNL 1850',
                 ),
                 buildContainer(
                   imageUrls: [
-                    'images/hotel1.jpg',
-                    'images/hotel2.jpg',
-                    'images/hotel3.jpg',
+                    'images/t1.jpg',
+                    'images/t2.jpg',
+                    'images/t3.jpg',
+                    'images/t4.jpg',
+                    'images/t33.jpg',
+                    'images/b1.jpg',
                   ],
                   title: 'Triple',
                   price: 'HNL 2650',
                 ),
                 buildContainer(
                   imageUrls: [
-                    'images/hotel1.jpg',
-                    'images/hotel2.jpg',
-                    'images/hotel3.jpg',
+                    'images/suit1p1.jpg',
+                    'images/suit1p2.jpg',
+                    'images/b1.jpg',
                   ],
                   title: 'Suite Junior (1 Persona)',
                   price: 'HNL 1450',
                 ),
                 buildContainer(
                   imageUrls: [
-                    'images/hotel1.jpg',
-                    'images/hotel2.jpg',
-                    'images/hotel3.jpg',
+                    'images/suit2p1.jpg',
+                    'images/suit2p11.jpg',
+                    'images/suit2p3.jpg',
+                    'images/b1.jpg',
                   ],
                   title: 'Suite Junior (2 Personas)',
                   price: 'HNL 1800',
                 ),
                 buildContainer(
                   imageUrls: [
-                    'images/hotel1.jpg',
-                    'images/hotel2.jpg',
-                    'images/hotel3.jpg',
+                    'images/p2.jpg',
+                    'images/p3.jpg',
+                    'images/p4.jpg',
+                    'images/p22.jpg',
+                    'images/b1.jpg',
                   ],
                   title: 'Suite Principal',
                   price: 'HNL 2100',
@@ -125,7 +134,7 @@ class _CategoriaState extends State<Categoria> {
       required String price}) {
     return Container(
       width: 380,
-      height: 478,
+      height: 458,
       margin: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
       decoration: BoxDecoration(
         color: Colors.white,
@@ -143,7 +152,7 @@ class _CategoriaState extends State<Categoria> {
       child: Column(
         children: [
           SizedBox(
-            height: 15,
+            height: 0,
           ),
           CarouselSlider(
             items: imageUrls.map((imageUrl) {
